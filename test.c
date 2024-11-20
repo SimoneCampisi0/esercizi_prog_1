@@ -1,11 +1,29 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int **fun(int k) {
+    // int *arr = malloc(sizeof(double) * k);
+    // for (int i = 0; i < k; i++) {
+    //     arr[i] = 2*i;
+    // }
+    int **arr = (int **) calloc(10, sizeof(int *));
+    return arr;
+}
+
 int main () {
-    int a = 10;
-    int b;
-    int v = a * b;
-
-    printf("v: %d\n", v);
-
-    b = 15;
-    return 0;
+    int **arr = fun(10);
+    for (int i = 0; i < 10; i++) {
+        *(arr + i) = malloc(sizeof(int) * 10);
+        for(int j = 0; j < 10; j++) {
+            *(*(arr + i) + j) = rand()%(10 - 5 + 1) + 5;
+        }
+    }
+    
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
 }
