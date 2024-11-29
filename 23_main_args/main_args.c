@@ -43,13 +43,15 @@ int main(int argc, char *argv[]){
     return -1;
   }
 
-  // parsing e controllo parametri a e b (uso funzione strtoul) 
+  // parsing e controllo parametri a e b (uso funzione strtoul - string to unsigned long)
+  //strtoul(strDaConvertire, puntatore a puntatore usato per restituire indirizzo del primo carattere non valido, base del numero);
   char *ptr1, *ptr2; 
   unsigned long a = strtoul(argv[1], &ptr1, 10); 
-  unsigned long b = strtoul(argv[2], &ptr2, 10); 
+  float b = strtof(argv[2], &ptr2); 
 
   fprintf(stderr, "\n Checking parameter a.."); 
   // vedi documentazione famiglia di funzioni strtoul()
+  //Si controlla se ptr1 == argv[1] perché essi sono uguali se non è stato possibile convertire alcun carattere della stringa. Quindi ptr1 ottiene da riga 49 tutta la stringa.
   if(ptr1 == argv[1] || a < 10 || a > 20){ // controllo argomenti
     fprintf(stderr, "\n %s Parameter a must be an integer in [10, 20], arg: %s\n", ERR, argv[1]);
     return -1; 
@@ -57,8 +59,9 @@ int main(int argc, char *argv[]){
   fprintf(stderr, "OK"); 
 
   fprintf(stderr, "\n Checking parameter b.."); 
-  if(ptr1 == argv[2] || b < 10 || b > 20){
-    fprintf(stderr, "\n %s Parameter b must be an integere in [10, 20], arg: %s\n", ERR, argv[2]);
+  // if(ptr1 == argv[2] || b < 10 || b > 20){ //Errato. Bisognava confrontare il puntatore ptr2.
+  if(ptr2 == argv[2] || b < 0.0 || b > 5.0){
+    fprintf(stderr, "\n %s Parameter b must be an integere in [0.0, 5.0], arg: %s\n", ERR, argv[2]);
     return -1; 
   }
   fprintf(stderr, "OK"); 
@@ -76,6 +79,6 @@ int main(int argc, char *argv[]){
     fprintf(stderr, "\n %s Length of string s2 must be in [5, 15], arg: %s\n", ERR, argv[4]);
     return -1; 
   } 
-  fprintf(stderr, "OK"); 
+  fprintf(stderr, "OK\n"); 
   
 }
