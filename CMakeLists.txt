@@ -1,0 +1,78 @@
+cmake_minimum_required(VERSION 3.29)
+project(C C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(Liste/common)
+include_directories(Liste/lists/double_linked_lists)
+include_directories(Liste/lists/single_linked_lists)
+include_directories(Liste/queue/by_array)
+include_directories(Liste/queue/by_list)
+include_directories(Liste/stack)
+
+add_executable(C
+    esFun/1.c
+    Liste/common/data.c
+    Liste/common/data.h
+    Liste/common/double_ref_node.h
+    Liste/common/single_ref_node.h
+    Liste/lists/double_linked_lists/double_linked_list.c
+    Liste/lists/double_linked_lists/double_linked_list.h
+    Liste/lists/double_linked_lists/main.c
+    Liste/lists/single_linked_lists/main.c
+    Liste/lists/single_linked_lists/single_linked_list.c
+    Liste/lists/single_linked_lists/single_linked_list.h
+    Liste/queue/by_array/circularQueue.c
+    Liste/queue/by_array/circularQueue.h
+    Liste/queue/by_array/main.c
+    Liste/queue/by_list/main.c
+    Liste/queue/by_list/queue.c
+    Liste/queue/by_list/queue.h
+    Liste/stack/main.c
+    Liste/stack/stack.c
+    Liste/stack/stack.h
+    puntatori_svolti/C_code/14_01.c
+    puntatori_svolti/C_code/14_02.c
+    puntatori_svolti/1.c
+    puntatori_svolti/2.c
+    14_1.c
+    14_3.c
+    15_2.c
+    15_3.c
+    h104.c
+    h105.c
+    h106.c
+    h107.c
+    h108.c
+    h109.c
+    h11_1.c
+    h11_2.c
+    h11_3.c
+    h11_4.c
+    h11_5.c
+    h11_6.c
+    h11_7.c
+    h12_1.c
+    h12_2.c
+    h13_1.c
+    H13_2.c
+    h13_3.c
+    h14_2.c
+    h15_1.c
+    h15_4.c
+    h16_1.c
+    h16_2.c
+    h17_1.c
+    h17_2.c
+    h17_3.c
+    h18_1.c
+    h19_1.c
+    h22_1.c
+    H91.c
+    H92.c
+    h93.c
+    passaggio_valore_indirizzo.c
+    srand.c
+    test.c
+    test1.c
+        Liste/lists/double_linked_lists/impl.c)
