@@ -1,18 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-double genDoubleRandom(double a, double b) {
-    return a + ((double) rand() / RAND_MAX) * (b - a);
+int genRandomInteger(int a, int b) {
+    return rand()%(b - a + 1) + a;
 }
-void initializeMatrix(double ***arr, int n, int m) {
-    //inizializzo le righe
-    *arr = malloc(sizeof(double *) * n);
-    for(int i = 0; i < n; i++) {
-        //inizializzo le colonne
-        (*arr)[i] = malloc(sizeof(double) * m);
-        for (int j = 0; j < m; j++) {
-            (*arr)[i][j] = genDoubleRandom(1.0, 10.0);
-            printf("%lf ", (*arr)[i][j]);
+
+//In questo metodo, ptr è un array di dimensione v di puntatori a int
+//L'asterisco *, prima di ptr, si applica a ogni elemento dell'array.
+//Ogni elemento dell'array è quindi un puntatore a un int. Graficamente:
+/* 
+ ptr ──┬───> int
+       ├───> int
+       ├───> int
+       ...
+       (v puntatori a int)
+ */
+void printMatrix(int *ptr[], int v, int l) {
+    for (int i = 0; i < v; i++) {
+        for(int j = 0; j < l; j++) {
+            printf("%d ", ptr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void printMatrix1(int *(ptr)[], int v, int l) {
+    for (int i = 0; i < v; i++) {
+        for(int j = 0; j < l; j++) {
+            printf("%d ", ptr[i][j]);
         }
         printf("\n");
     }
@@ -20,10 +35,19 @@ void initializeMatrix(double ***arr, int n, int m) {
 
 int main () {
     srand(time(0));
-    // int a[] = {1,2,3,4,5};
-    // int *arr = &a[1];
+    int v = 10, l = 5;
+    int *ptr[10];
+    for(int i = 0; i < v; i++) {
+        ptr[i] = (int *) malloc(sizeof(int) * l);
+        for(int j = 0; j < l; j++) {
+            ptr[i][j] = genRandomInteger(0, 100);
+            // printf("%d ", ptr[i][j]);    
+        }
+        // printf("\n");
+    }
 
-    double **arr;
-    //Bisogna passare l'indirizzo della prima cella a cui punta la matrice.
-    initializeMatrix(&arr, 2, 3);
+    // printMatrix(ptr, v, l);
+    printMatrix1(ptr, v, l);
+
+    return 0;
 }

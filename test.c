@@ -9,6 +9,12 @@ long fat(int n) {
     return n * fat(n - 1); //chiamata ricorsiva
 }
 int main () {
-    double x = (x / 2 + 1234.1234);
-    int s = rand () % 100.0;
+    int x = 5, y = 10;
+    int *p = &x, *q = &y;
+    p = q;
+    *p = *p + 5;
+    printf("%d %d", x, y);
+
+
+
 }
