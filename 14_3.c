@@ -1,41 +1,33 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-double genDoubleRandom(double x, double y) {
-    return x + ((double)rand() / RAND_MAX) * (y - x);
+#include <time.h>
+double genDoubleRandom(double a, double b) {
+    return a + ((double)rand() / RAND_MAX) * (b - a);
 }
 int main () {
     srand(time(0));
-    int N = 200;
-    double v[N];
-    
-    for (int i = 0; i < N; i++) {
-        *(v + i) = genDoubleRandom(10, 50);
-        // printf("%lf\n", *(v + i));
+    int n = 200;
+    double *v = malloc(sizeof(double) * n);
+    for (int i = 0; i < n; i++) {
+        *(v + i) = genDoubleRandom(10.0, 50.0); 
     }
 
-    //Può cambiare l'indirizzo di memoria
-    //Ma NON può cambiare il valore contenuto in esso
-    const double *ptr = v;
-
-    //Può cambiare il valore contenuto nell'indirizzo di memoria
-    //Ma NON può cambiare l'indirizzo di memoria
-    double *const ptr1 = v;
-    for (int i = 0; i < N; i++) {
-        if(i % 2 != 0 && i % 3 != 0) {
-            // printf("before: %lf\n", *(ptr + i));
-            ptr1[i] = genDoubleRandom(100, 200);
-            // printf("after: %lf\n", *(ptr + i));
-        }
+    const double *p = v;
+    for(int i = 0; i < n; i++) {
+        if(i % 2 != 0 && i % 3 != 0)
+            printf("%lf\n", *(p + i));
     }
 
-    for(int i = 0; i < N; i++) {
-        printf("%.100f\n", *(ptr1 + i));
+    printf("\n\n\n");
+
+    double * const p1 = v;
+    for (int i = 0; i < n; i++) {
+        if(i % 2 != 0 && i % 3 != 0)
+            *(p1 + i) = genDoubleRandom(100.0, 200.0);
+        printf("%lf\n", *(p1 + i));
     }
 
-    
-    
+    v = NULL;
+    free(v);
 
-
-    return 0;
 }
