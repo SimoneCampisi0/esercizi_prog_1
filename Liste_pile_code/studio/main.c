@@ -1,5 +1,5 @@
-#include "common\single_linked_list.h"
-#include "common\single_ref_node.h"
+#include "common/single_linked_list.h"
+#include "common/single_ref_node.h"
 
 #include <stdlib.h>
 #include <time.h>
