@@ -222,7 +222,7 @@ int main()
         switch (r)
         {
         case 0:
-            printf("sto uscendo...\n"),
+            printf("Sto uscendo...\n"),
                 system("cls");
             break;
         case 1:
@@ -246,7 +246,8 @@ int main()
             system("cls");
             break;
         };
-    } while (r != 0);
+    }
+    while (r != 0);
 
     return 0;
 }
