@@ -14,12 +14,22 @@ int main () {
     struct Nodo * head = NULL;
     struct Dato example;
 
+    int lastNodeValue = 0;
     for (int i = 0; i < 5; i++) {
         example.value = genIntRandom(1, 10);
         //TODO: terminare studio e implementazione metodo insertNodo.
+        lastNodeValue = example.value;
         insertNodo(&example, &head);
     }
     
+    printList(head);
+
+    struct Nodo *ptr = (struct Nodo *) malloc(sizeof(struct Nodo));
+    ptr->d.value = lastNodeValue;
+    deleteNodo(ptr, &head);
+
+    printf("\n\n\n");
+
     printList(head);
 
     return 0;

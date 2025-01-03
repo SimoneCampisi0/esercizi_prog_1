@@ -68,7 +68,7 @@ void insertNodo(struct dato* ptrDato, struct nodo **head){
 	
 }
 
-void deleteNodo(struct dato* ptrDato, struct nodo **head){
+void deleteNodo(struct dato *ptrDato, struct nodo **head){
     if(isEmpty(*head))
 			return; 
 

@@ -61,3 +61,27 @@ void insertNodo(struct Dato *ptrDato, struct Nodo **head) {
     if(current != NULL)
         newNode->next = current;
 }
+
+void deleteNodo(struct Dato *ptrDato, struct Nodo **head) {
+    if(isEmpty(*head)) {
+        return;
+    }
+
+    struct Nodo *current = *head;
+    struct Nodo *prev = NULL;
+
+    // Scorro la lista finché il valore del ptrDato non corrisponde a quello da eliminare
+    while (current != NULL && confrontaDati(&(current->d), ptrDato) != 0) {
+        prev = current;
+        current = current -> next;
+    }
+
+    if(current != NULL) {
+        if(prev) {
+            prev -> next = current -> next;
+        }
+        else {
+            *head = current -> next;
+        }
+    }
+}

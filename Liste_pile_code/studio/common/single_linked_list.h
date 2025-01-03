@@ -7,5 +7,6 @@
 int isEmpty(const struct Nodo *head);
 void printList(const struct Nodo *head);
 void insertNodo(struct Dato *ptrDato, struct Nodo **head);
+void deleteNodo(struct Nodo *ptrDato, struct Nodo **head);
 
 #endif
