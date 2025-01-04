@@ -28,13 +28,24 @@ struct Nodo {
 };
 
 
-void printList(struct Nodo *head) {
-    struct Nodo *curr = head;
-    while (curr != NULL) {
-        printf("[%d] ", curr->value);
-        curr = curr -> next;
+int isEmpty(struct Nodo *head) {
+    if(head == NULL) {
+        return 1;
     }
-    printf("\n");
+    return 0;
+}
+
+void printList(struct Nodo *head) {
+    if(!isEmpty(head)) {
+        struct Nodo *curr = head;
+        while (curr != NULL) {
+            printf("[%d] ", curr->value);
+            curr = curr -> next;
+        }
+        printf("\n");
+    } else {
+        printf("Lista vuota.\n");
+    }
 }
 
 void insertNode(struct Nodo **head, int value) {
@@ -64,10 +75,39 @@ void insertNode(struct Nodo **head, int value) {
         *head = newNode;
 }
 
+
+void deleteNode(struct Nodo **head, int value) {
+    struct Nodo *curr = *head;
+    struct Nodo *prev = NULL;
+    while (curr != NULL && curr -> value != value) {
+        prev = curr;
+        curr = curr -> next;
+    }
+
+    // Se si è trovato il valore da eliminare e si trova tra due nodi
+    if(curr != NULL && curr -> next != NULL && prev != NULL) {
+        prev -> next = curr -> next;
+        free(curr);
+    } else if(curr != NULL && curr -> next == NULL && prev != NULL) { // Se il valore è stato trovato ed esso si trova alla fine della lista
+        prev -> next = NULL;
+        free(curr);
+    } else if(curr != NULL && prev == NULL) { // Se il valore trovato si trova in testa
+        if(curr -> next != NULL) {
+            *head = curr -> next;
+            free(curr);
+        } else {
+            free(*head);
+            *head = NULL;
+        }
+    } else {
+        printf("Valore non trovato\n");
+    }
+}
+
 int main () {
     int n = 0;
     struct Nodo *head = NULL;
-    
+
     printf("Digita n: ");
     scanf("%d", &n);
 
@@ -80,4 +120,19 @@ int main () {
     }
 
     printList(head);
+
+    // int isEmptyList = isEmpty(head);
+    // if(isEmptyList == 1) {
+    //     printf("Lista vuota.\n");
+    // } else {
+    //     printf("Lista non vuota.\n");
+    // }
+
+    int value;
+    printf("Digita il valore da eliminare: ");
+    scanf("%d", &value);
+    deleteNode(&head, value);
+
+    printList(head);
+
 }
