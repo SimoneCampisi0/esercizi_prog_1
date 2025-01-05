@@ -92,6 +92,21 @@ int main () {
     printList(head);
     //TODO: iterare lista e concatenarne i valori a una nuova stringa, per poi stamparla
 
+    char *s = (char *) malloc(sizeof(char));
+    struct Nodo *curr = head;
+    while (curr != NULL) {
+        char buffer[50];
+        sprintf(buffer, "%d",curr -> value);
+
+        strcat(s, buffer);
+        curr = curr -> next;
+    }
+
+    int len = strlen(s);
+    s = realloc(s, (len+1) * sizeof(char));
+    s[len + 1] = '\0';
+    printf("Stringa: %s\n ", s);
+
     return 0;
 
 }
