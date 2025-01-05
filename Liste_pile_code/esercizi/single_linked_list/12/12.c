@@ -98,6 +98,8 @@ int main () {
         char buffer[50];
         sprintf(buffer, "%d",curr -> value);
 
+        strcat(buffer, " ");
+
         strcat(s, buffer);
         curr = curr -> next;
     }
