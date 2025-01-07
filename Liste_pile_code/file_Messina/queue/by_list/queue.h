@@ -6,9 +6,9 @@
 
     #define QUEUE_EMPTY	-1
     
-    struct queue{
-	struct nodo *tail;
-	struct nodo *head;
+    struct queue {
+        struct nodo *tail;
+        struct nodo *head;
     }; 
 
     /* Inserisce un nuovo nodo in coda. 
@@ -29,7 +29,7 @@
     */ 
     void printQueue(struct queue *q);
 
-    /* per convenzione la coda e' vuota dei puntatori	
+    /* per convenzione la coda e' vuota se i puntatori	
     * head e tail sono NULL
     * restituisce il valore zero se la coda non e' vuota
     * restituisce un valore diverso da zero in caso contrario

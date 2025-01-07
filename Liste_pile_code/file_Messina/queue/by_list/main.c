@@ -13,9 +13,9 @@ int main(){
     struct dato d;
 
     for(int i=0; i<6; i++){
-	d.value  = array[i];
-	enqueue(&q, &d); 
-	printQueue(&q);
+        d.value  = array[i];
+        enqueue(&q, &d); 
+        printQueue(&q);
     }
 
     printQueue(&q);
